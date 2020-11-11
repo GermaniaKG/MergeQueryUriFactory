@@ -33,14 +33,34 @@ class MergeQueryUriFactoryDecoratorTest extends \PHPUnit\Framework\TestCase
 
 
     /**
+     * @dataProvider provideInvalidArguments
+     * @depends testDecoration
+     */
+    public function testInvalidArgumentException( $invalid, $sut )
+    {
+        $this->expectException( \InvalidArgumentException::class );
+        $sut->createUriMergeQuery( $invalid, array());
+    }
+
+    public function provideInvalidArguments()
+    {
+        return array(
+            [ false ],
+            [ true ],
+            [ 8 ],
+            [ new \StdClass() ]
+        );
+    }
+
+
+
+    /**
      * @dataProvider provideQueryParams
      * @depends testDecoration
      */
-    public function testMergeQueryParams( array $merge_params, $expected_query, $sut )
+    public function testMergeQueryParams( $uri,  array $merge_params, $expected_query, $sut )
     {
-        $url = 'http://httpbin.org';
-
-        $uri = $sut->createUriMergeQuery( $url, $merge_params);
+        $uri = $sut->createUriMergeQuery( $uri, $merge_params);
         $this->assertInstanceOf( UriInterface::class, $uri);
         $this->assertEquals( $uri->getQuery(), $expected_query);
     }
@@ -48,8 +68,14 @@ class MergeQueryUriFactoryDecoratorTest extends \PHPUnit\Framework\TestCase
 
     public function provideQueryParams()
     {
+        $uri_string = 'http://httpbin.org';
+
+        $uri_factory = new Psr17Factory;
+        $uri_object = $uri_factory->createUri( $uri_string );
+
         return array(
-            [ array('foo' => 'bar'), http_build_query(array('foo' => 'bar'))],
+            [ $uri_string, array('foo' => 'bar'), http_build_query(array('foo' => 'bar'))],
+            [ $uri_object, array('foo' => 'bar'), http_build_query(array('foo' => 'bar'))],
         );
     }
 }
