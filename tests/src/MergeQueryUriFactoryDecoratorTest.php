@@ -18,6 +18,7 @@ class MergeQueryUriFactoryDecoratorTest extends \PHPUnit\Framework\TestCase
 
         $sut = new MergeQueryUriFactoryDecorator($uri_factory);
         $this->assertInstanceOf(UriFactoryInterface::class, $sut);
+        $this->assertIsCallable( $sut );
     }
 
     public function testDecoration()
@@ -63,6 +64,12 @@ class MergeQueryUriFactoryDecoratorTest extends \PHPUnit\Framework\TestCase
         $uri = $sut->createUriMergeQuery( $uri, $merge_params);
         $this->assertInstanceOf( UriInterface::class, $uri);
         $this->assertEquals( $uri->getQuery(), $expected_query);
+
+        // Test callable interface
+        $uri2 = $sut( $uri, $merge_params);
+        $this->assertInstanceOf( UriInterface::class, $uri2);
+        $this->assertEquals( $uri2->getQuery(), $expected_query);
+
     }
 
 

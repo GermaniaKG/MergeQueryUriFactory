@@ -39,6 +39,12 @@ class MergeQueryUriFactoryDecorator implements UriFactoryInterface
     }
 
 
+    public function __invoke( $url, array $query_params = array() ) : UriInterface
+    {
+        return $this->createUriMergeQuery( $url, $query_params );
+    }
+
+
     /**
      * @param  string|UriInterface  $url   URI string or UriInterface
      * @param  array  $query_params        Overriding query parameters
