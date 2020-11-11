@@ -18,7 +18,7 @@ $ composer require germania-kg/mergequery_urifactory
 
 ## Usage:
 
-The **MergeQueryUriFactoryDecorator** adds a `createUriMergeQuery` method to any given PSR-17 UriFactory. It also itself implements `Psr\Http\Message\UriFactoryInterface`.
+The **MergeQueryUriFactoryDecorator** adds a `createUriMergeQuery` method to any given PSR-17 UriFactory. It also itself implements `Psr\Http\Message\UriFactoryInterface` and can also be used as `callable`.
 
 The `createUriMergeQuery` accepts both *string* and *UriInterface* URIs.
 
