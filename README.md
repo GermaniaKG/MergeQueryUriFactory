@@ -8,6 +8,14 @@
 
 
 
+## Installation
+
+```bash
+$ composer require germania-kg/mergequery_urifactory
+```
+
+
+
 ## Usage:
 
 The **MergeQueryUriFactoryDecorator** adds a `createUriMergeQuery` method to any given PSR-17 UriFactory. It also itself implements `Psr\Http\Message\UriFactoryInterface`.
@@ -32,14 +40,6 @@ $uri2 = $uri_factory->createUriMergeQuery( 'http://httpbin.org', [
 
 echo $uri2;
 // http://httpbin.org?foo=bar
-```
-
-
-
-## Installation
-
-```bash
-$ composer require germania-kg/mergequery_urifactory
 ```
 
 
