@@ -6,9 +6,9 @@ use Psr\Http\Message\UriInterface;
 
 /**
  * This UriFactory decorator builds an UriInterface
- * from an URL string and an Query String Parameters array.
+ * from an URI string or UriInterface and an Query String Parameters array.
  *
- * The `createUriMergeQuery` method accepts an array wit additional query params
+ * The `createUriMergeQuery` method accepts an array with additional query params
  * that will be 'merged' into the resulting UriInterface.
  */
 class MergeQueryUriFactoryDecorator implements UriFactoryInterface
@@ -39,8 +39,14 @@ class MergeQueryUriFactoryDecorator implements UriFactoryInterface
     }
 
 
+    public function __invoke( $url, array $query_params = array() ) : UriInterface
+    {
+        return $this->createUriMergeQuery( $url, $query_params );
+    }
+
+
     /**
-     * @param  string|UriInterface  $url   URL string
+     * @param  string|UriInterface  $url   URI string or UriInterface
      * @param  array  $query_params        Overriding query parameters
      * @return UriInterface                New URI
      */
