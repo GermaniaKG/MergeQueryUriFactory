@@ -8,7 +8,6 @@
 
 
 
-
 [![Packagist](https://img.shields.io/packagist/v/germania-kg/mergequery_urifactory.svg?style=flat)](https://packagist.org/packages/germania-kg/mergequery_urifactory)
 [![PHP version](https://img.shields.io/packagist/php-v/germania-kg/mergequery_urifactory.svg)](https://packagist.org/packages/germania-kg/mergequery_urifactory)
 [![Build Status](https://img.shields.io/travis/GermaniaKG/MergeQueryUriFactory.svg?label=Travis%20CI)](https://travis-ci.org/GermaniaKG/MergeQueryUriFactory)
@@ -43,12 +42,12 @@ $uri_factory = new MergeQueryUriFactoryDecorator( $decoratee );
 // You know the UriFactoryInterface:
 $uri = $uri_factory->createUri( 'http://httpbin.org' );
 
-// Programmatically merge query parameters:
-$uri2 = $uri_factory->createUriMergeQuery( 'http://httpbin.org', [
-  'foo' => 'bar'
-]);
+// Programmatically merge query parameters,
+// either to a string or UriInterface:
+$uri2 = $uri_factory->createUriMergeQuery( 'http://httpbin.org', ['foo' => 'bar']);
+$uri3 = $uri_factory->createUriMergeQuery( $uri, ['foo' => 'bar']);
 
-echo $uri2;
+echo $uri3;
 // http://httpbin.org?foo=bar
 ```
 
