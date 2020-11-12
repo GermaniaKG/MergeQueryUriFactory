@@ -8,6 +8,16 @@
 
 
 
+
+[![Packagist](https://img.shields.io/packagist/v/germania-kg/mergequery_urifactory.svg?style=flat)](https://packagist.org/packages/germania-kg/mergequery_urifactory)
+[![PHP version](https://img.shields.io/packagist/php-v/germania-kg/mergequery_urifactory.svg)](https://packagist.org/packages/germania-kg/mergequery_urifactory)
+[![Build Status](https://img.shields.io/travis/GermaniaKG/MergeQueryUriFactory.svg?label=Travis%20CI)](https://travis-ci.org/GermaniaKG/MergeQueryUriFactory)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/MergeQueryUriFactory/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/MergeQueryUriFactory/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/MergeQueryUriFactory/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/MergeQueryUriFactory/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/GermaniaKG/MergeQueryUriFactory/badges/build.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/MergeQueryUriFactory/build-status/master)
+
+
+
 ## Installation
 
 ```bash
