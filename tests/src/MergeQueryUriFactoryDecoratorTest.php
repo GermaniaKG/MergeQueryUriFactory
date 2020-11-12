@@ -11,7 +11,7 @@ class MergeQueryUriFactoryDecoratorTest extends \PHPUnit\Framework\TestCase
 {
     use ProphecyTrait;
 
-    public function testInstantiation()
+    public function testInstantiation() : void
     {
         $uri_factory_mock = $this->prophesize(UriFactoryInterface::class);
         $uri_factory = $uri_factory_mock->reveal();
@@ -21,7 +21,7 @@ class MergeQueryUriFactoryDecoratorTest extends \PHPUnit\Framework\TestCase
         $this->assertIsCallable( $sut );
     }
 
-    public function testDecoration()
+    public function testDecoration() : UriFactoryInterface
     {
         $uri_factory = new Psr17Factory;
         $sut = new MergeQueryUriFactoryDecorator($uri_factory);
@@ -37,7 +37,7 @@ class MergeQueryUriFactoryDecoratorTest extends \PHPUnit\Framework\TestCase
      * @dataProvider provideInvalidArguments
      * @depends testDecoration
      */
-    public function testInvalidArgumentException( $invalid, $sut )
+    public function testInvalidArgumentException( $invalid, MergeQueryUriFactoryDecorator $sut ) : void
     {
         $this->expectException( \InvalidArgumentException::class );
         $sut->createUriMergeQuery( $invalid, array());
@@ -59,7 +59,7 @@ class MergeQueryUriFactoryDecoratorTest extends \PHPUnit\Framework\TestCase
      * @dataProvider provideQueryParams
      * @depends testDecoration
      */
-    public function testMergeQueryParams( $uri,  array $merge_params, $expected_query, $sut )
+    public function testMergeQueryParams( $uri,  array $merge_params, $expected_query, MergeQueryUriFactoryDecorator $sut ) : void
     {
         $uri = $sut->createUriMergeQuery( $uri, $merge_params);
         $this->assertInstanceOf( UriInterface::class, $uri);
@@ -73,7 +73,7 @@ class MergeQueryUriFactoryDecoratorTest extends \PHPUnit\Framework\TestCase
     }
 
 
-    public function provideQueryParams()
+    public function provideQueryParams() : array
     {
         $uri_string = 'http://httpbin.org';
 

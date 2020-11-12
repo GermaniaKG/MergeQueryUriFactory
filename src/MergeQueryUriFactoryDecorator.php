@@ -39,6 +39,14 @@ class MergeQueryUriFactoryDecorator implements UriFactoryInterface
     }
 
 
+
+    /**
+     * @param  string|UriInterface  $url           URI string or UriInterface
+     * @param  string[]             $query_params  Overriding query parameters
+     * @return UriInterface
+     *
+     * @throws InvalidArgumentException when no string or UriInterface is passed
+     */
     public function __invoke( $url, array $query_params = array() ) : UriInterface
     {
         return $this->createUriMergeQuery( $url, $query_params );
@@ -46,9 +54,11 @@ class MergeQueryUriFactoryDecorator implements UriFactoryInterface
 
 
     /**
-     * @param  string|UriInterface  $url   URI string or UriInterface
-     * @param  array  $query_params        Overriding query parameters
-     * @return UriInterface                New URI
+     * @param  string|UriInterface  $url           URI string or UriInterface
+     * @param  string[]             $query_params  Overriding query parameters
+     * @return UriInterface
+     *
+     * @throws InvalidArgumentException when no string or UriInterface is passed
      */
     public function createUriMergeQuery( $url, array $query_params = array() ) : UriInterface
     {
