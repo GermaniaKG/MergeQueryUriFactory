@@ -14,11 +14,8 @@ build:
                     file: 'coverage'
                     format: 'php-clover'
 
-    nodes:
 
-        php72:
-            environment:
-                php: 7.2
+    nodes:
 
         php73:
             environment:
@@ -37,4 +34,7 @@ checks:
 filter:
     excluded_paths:
         - tests/*
-
+    # dependency_paths:
+    #     - "vendor/"
+    #     # Everything in a root level "lib" directory will be excluded from analysis
+    #     # but treated as a dependency
